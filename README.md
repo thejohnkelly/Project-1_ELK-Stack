@@ -6,6 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 
+Link to YAML files to run in Ansible
 ---
 - name: Config Web VM with Docker
   hosts: webservers
@@ -241,7 +242,7 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the docker-playbook elk-playbook, filebeat-playbook, and metricbeat-playbook YAML files to the etc/ansible/roles folder.
+- Copy the contents of the Ansible folder to the etc/ansible/roles folder. This folder contains all of the YAML files needed to fully install and launch the ELK Stack, all the DVWAs, and both the beats. 
 - Update the etc/ansible/hosts file to include the private IP addresses of each machine you wish the playbook to run on, remembering to include ansible_python_interpreter=/usr/bin/python3. For each seperate instance you must create a new named category (i.e., [elk]) and add the desired IP addresses to ensure that the instances are installed on the correct machines.
 - Run the playbook, and navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. Additionally the installation can be verified by running either the "sudo docker ps" or "curl http://localhost:5601/app/kibana" in the command line within the ELK machine.
 
