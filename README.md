@@ -249,7 +249,7 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
 
 
-To download the playbooks, use "curl -LJO https://github.com..."
+To download the playbooks, use "curl -LJO https://github.com/thejohnkelly/elk-stack-project.git"
 Use "sudo mv docker-playbook.yml elk-playbook.yml filebeat-playbook.yml metricbeat-playbook.yml elkstack-main.yml > etc/ansible/roles" to move the playbook files into the roles folder.
 To download 
 Use "sudo nano etc/ansible/hosts" and add the private IP addresses of you VMs. Be sure to include to include "ansible_python_interpreter=/usr/bin/python3" after each entry. If you are installing ELK and the beats to different VMs, you will need to create a new name for the instance and then add the private IP address of the machine you want to be configured.
