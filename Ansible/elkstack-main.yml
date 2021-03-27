@@ -1,0 +1,13 @@
+---
+- name: run docker-playbook.yml
+  import-playbook: docker-playbook.yml
+  
+  - name: run elk-playbook.yml
+  import-playbook: elk-playbook.yml
+
+- name: run filebeat-playbook.yml
+  import-playbook: filebeat-playbook.yml
+
+- name: run metricbeat-playbook.yml
+  import-playbook: metricbeat-playbook.yml
+  
