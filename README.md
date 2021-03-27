@@ -75,18 +75,15 @@ These Beats allow us to collect the following information from each machine:
 - Filebeats collects log data from a specified location, which it it forwards on to a centralized location for more detailed analysis.
 - Metricbeat collects metric data from systems and services and ships that data where it can be cataloged and analysed.
 
-### Using the Playbook
+### Using the Playbooks
 
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbooks, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the contents of the Ansible folder to the etc/ansible/roles folder. This folder contains all of the YAML files needed to fully install and launch the ELK Stack, Docker on all the DVWAs, and both the beats. 
-- Update the etc/ansible/hosts file to include the private IP addresses of each machine you wish the playbook to run on, remembering to include ansible_python_interpreter=/usr/bin/python3. For each seperate instance you must create a new named category (i.e., [elk]) and add the desired IP addresses to ensure that the instances are installed on the correct machines.
-- Run the playbook, and navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. Additionally the installation can be verified by running either the "sudo docker ps" or "curl http://localhost:5601/app/kibana" in the command line within the ELK machine.
-
-
-- To download the playbooks, use "curl -LJO https://github.com/thejohnkelly/elk-stack-project.git"
-- Use "sudo mv docker-playbook.yml elk-playbook.yml filebeat-playbook.yml metricbeat-playbook.yml elkstack-main.yml > etc/ansible/roles" to move the playbook files into the roles folder.
-- Use "sudo nano etc/ansible/hosts" and add the private IP addresses of you VMs. Be sure to include to include "ansible_python_interpreter=/usr/bin/python3" after each entry. If you are installing ELK and the beats to different VMs, you will need to create a new name for the instance and then add the private IP address of the machine you want to be configured.
-- Run the command "sudo ansible-playbook /etc/ansible/roles/elkstack-main.yml". This file will run all of the playbooks.
-- Locate the configuration files for Filebeat (etc/filebeat/filebeat.yml) and Metricbeat (etc/metricbeat/metricbeat.yml) and use "sudo nano <filepath>" to edit the files. under output.elasticsearch, add the IP address of your ELK machine as the host. Do the same under setup.kibana.
+- Download the playbooks, use "curl -LJO https://github.com/thejohnkelly/elk-stack-project.git"
+- Use the command "mkdir etc/ansible/roles" to create the roles directory that will srote the playbook files.
+- Navigate to /elk-stack-project and use the command "sudo cp ./Ansible/* etc/ansible/roles" to copy the playbook files into the new roles folder. The roles folder will now contain all of the YAML files needed to fully install and launch the ELK Stack, Docker on all the DVWAs, and both the beats. 
+- Use "sudo nano etc/ansible/hosts" and add the private IP addresses of you VMs under the heading '[webservers]', and add the private IP of your ELK server under the heading '[elk]' to ensure the instances are installed and configured on the correct machines.Be sure to include ansible_python_interpreter=/usr/bin/python3 after each IP address
+- Run the command "sudo ansible-playbook /etc/ansible/roles/elkstack-main.yml". This file will import and run all of the playbooks.
+- Locate the configuration files for Filebeat (etc/filebeat/filebeat.yml) and Metricbeat (etc/metricbeat/metricbeat.yml) and use "sudo nano <your_file_path>" to edit each of the files. Add the IP address of your ELK machine as the host under output.elasticsearch in both configuration files. Do the same under setup.kibana.
+- Navigate to http://<ELK.VM.External.IP>:5601/app/kibana to check that the installation worked as expected. Alternately the installation can be verified by running either the "sudo docker ps" or "curl http://localhost:5601/app/kibana" in the command line within the ELK machine.
