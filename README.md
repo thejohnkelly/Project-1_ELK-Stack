@@ -38,11 +38,11 @@ A summary of the access policies in place can be found in the table below.
 
 | Name      | Publicly Accessible | Allowed IP Addresses  |
 |-----------|---------------------|-----------------------|
-| Jump Box  | No                  | Admin IP              |
+| Jump Box  | Yes                 | Admin IP              |
 | Web 1     | No                  | 10.1.0.4              |
 | Web 2     | No                  | 10.1.0.4              |
 | Web 3     | No                  | 10.1.0.4              |
-| Rocinante | No                  | Admin IP and 10.1.0.4 |
+| Rocinante | Yes                 | Admin IP and 10.1.0.4 |
 
 ### Elk Configuration
 
