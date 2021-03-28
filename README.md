@@ -29,7 +29,7 @@ The configuration details of each machine may be found below.
 
 ### Access Policies
 
-Only the Jump Box machine (10.1.0.4) and the ELK server (10.0.0.4) can accept connections from the Internet. The machines on the internal network are not exposed to the public Internet, and can only be accessed by the Jump Box machine.
+The only machines that can accept connections from the internet are the Jump Box machine (10.1.0.4) via port 80 and the ELK server (10.0.0.4) via port 5601. The machines on the internal network are not exposed to the public Internet, and can only be accessed by the Jump Box machine.
 
 Access to both the Jump Box machine and the ELK server are only allowed from the following IP address:
 - Admin IP
