@@ -15,7 +15,8 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available and reliable, in addition to restricting traffic the network thereby defending against potential DDoS attacks. The use of a Jump Box allows the user to directly connect to the network via a single, controlled source. A Jump Box also has the advantage of being able to configure the network machine from a central location without the need to manually configure each machine.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and system metrics.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and system metrics. Filebeats collects log data from each of the DVWAs, which it it forwards on to a centralized location for more detailed analysis. Metricbeat collects metric data from the DVWAs and ships that data where it can be cataloged and analysed.
+
 
 The configuration details of each machine may be found below.
 
